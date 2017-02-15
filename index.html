@@ -317,8 +317,8 @@
                 playlist_id:'222222'
             },
             success:function (res) {
-                console.log(res.data.result.tracks[1].name);
-                console.log(res.data.result.tracks[0].mp3Url);
+                // console.log(res.data.result.tracks[1].name);
+                // console.log(res.data.result.tracks[0].mp3Url);
                 for (var i = 0; i < 7; i++) {
                 	var aaa = '<li><a href="'+res.data.result.tracks[i].mp3Url+'">'+res.data.result.tracks[i].name+'</a></li>';
                 	$('#list1').append(aaa);
