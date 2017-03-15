@@ -62,18 +62,42 @@ section {
         border-left: 0.05rem solid #e0e0e0; }
       section .user-box .sign-login .login {
         background: url(../img/sign.png) no-repeat 1.45rem center;
-        background-size: 1.45rem 1.45rem; }
+        background-size: 1.45rem 1.45rem;
+        position: relative; }
+        section .user-box .sign-login .login .login-son {
+          display: none;
+          width: 12rem;
+          height: 8.5rem;
+          background: #50c6b5;
+          opacity: .9;
+          position: fixed;
+          left: 2rem;
+          top: 8rem;
+          padding: 0;
+          margin: 0;
+          z-index: 10;
+          border: 1px solid #999;
+          color: #000; }
+          section .user-box .sign-login .login .login-son input {
+            width: 8rem;
+            height: 1.5rem;
+            margin: 1.5rem .1rem .45rem; }
     section .user-box .slide {
       height: 7.85rem;
-      width: 100%; }
+      width: 100%;
+      overflow: hidden; }
       section .user-box .slide ul {
         height: 7.85rem;
-        width: 100%;
-        overflow: hidden; }
+        width: 500%;
+        overflow: hidden;
+        -webkit-transform: translate3d(-16rem, 0, 0); }
       section .user-box .slide li {
         float: left;
         height: 7.85rem;
-        width: 100%; }
+        width: calc(100%/5); }
+        section .user-box .slide li img {
+          height: 7.85rem;
+          width: 16rem; }
         section .user-box .slide li a {
           display: block;
           position: relative;
@@ -108,17 +132,14 @@ section {
         height: 2rem;
         line-height: 2rem;
         border-top: 0.05rem solid #ececec;
-        margin: 0 0.4rem; }
-        section .user-box .list1 li a {
-          display: inline-block;
-          width: 13.5rem;
-          padding-left: 0.35rem;
-          font-size: 0.75rem;
-          color: #171b1a;
-          overflow: hidden;
-          white-space: nowrap;
-          text-overflow: ellipsis;
-          letter-spacing: 1px; }
+        margin: 0 0.4rem;
+        width: 14.5rem;
+        padding-left: 0.35rem;
+        font-size: 0.75rem;
+        color: #171b1a;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        letter-spacing: 1px; }
       section .user-box .list1 li:nth-of-type(1) {
         border-top: none; }
     section .user-box .hot {

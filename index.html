@@ -1,52 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0"/>
-	<title>GUoke</title>
-	<link rel="stylesheet" type="text/css" href="css/index.css">
+<meta charset="UTF-8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0"/>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no,email=no">
+<meta name="App-Config" content="fullscreen=yes,useHistoryState=yes,transition=yes"/>
+<meta name="x5-orientation" content="portrait">
+<meta name="screen-orientation" content="portrait">
+<title>GUoke</title>
+<link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
 <body>
 	<header>
-        <a href="javascrpit:;" class="menu">菜单</a>
+        <a href="javascrpit:;" class="menu" >菜单</a>
         <h1>Guokr.com</h1>
         <a href="javascript:;" class="pc">PC</a>
     </header>
 	<section>
-		<div class="user-box"> 
+		<div class="user-box" id="menu"> 
 			<div class="sign-login" id="#top">
-				<div class="login">用户登录</div>
+				<div class="login">用户登录
+					<div class="login-son">
+						&nbsp账号：<input type="text" ></input><br/>
+						&nbsp密码：<input type="password" ></input>
+					</div>
+				</div>
 				<div class="sign">用户注册</div>
+				
 			</div>
-			<div class="slide">
-				<ul class="clearfix">
-					<li>
+			<div class="slide outerbox">
+		        <ul class="banner clearfix">
+		        	<li><img src="img/3.jpg" /></li>
+		            <li>
 						<a href="">
 							<img src="img/slide1.png">
 							<span></span>
-							<p>紫禁城的石头是怎么运来的？</p>
+							<p>紫禁城11111111111111？</p>
 						</a>
 					</li>
-					<li>
+		            <li><img src="img/2.jpg" /></li>
+		            <li><img src="img/3.jpg" /></li>
+		            
+		             <li>
 						<a href="">
 							<img src="img/slide1.png">
 							<span></span>
-							<p>紫禁城的石头是怎么运来的？</p>
+							<p>紫禁城11111111111111？</p>
 						</a>
 					</li>
-					<li>
-						<a href="">
-							<img src="img/slide1.png">
-							<span></span>
-							<p>紫禁城的石头是怎么运来的？</p>
-						</a>
-					</li>
-				</ul>
+		        </ul>
 			</div>
 			<ul class="list1" id="list1">
 				<!-- 交互 -->
+
 			</ul>
 			<div class="hot hot-question">
 				<div class="hot-title clearfix">
@@ -269,19 +279,22 @@
 				</div>
 			</div>
 			<div class="back-top">
-				<a href="">回到顶部</a>
+				<a href="#menu">回到顶部</a>
 			</div>
     	</div>
 	</section>
 	<footer>
 		<a href=""><span>PC版</span></a>
-		<a href=""><span>移动应用</span></a>
+		<a href=""><span>联系方式</span></a>
 	</footer>
 </body>
 <script src="js/zepto.min.js"></script>
 <script src="js/touch.js"></script>
 <script src="js/fx.js"></script>
 <script type="text/javascript">
+	document.addEventListener('touchstart',function(ev){
+		ev.preventDefault();
+	},false);
 	(function(win,doc){
 		win.addEventListener('resize',change,false);
 		change();
@@ -289,6 +302,83 @@
 			doc.documentElement.style.fontSize=20/320*doc.documentElement.clientWidth+'px';	
 		}	
 	})(window,document);
+	(function(){
+        var oUl=document.querySelector('.slide ul');
+		var aLi=oUl.children;
+		var iNow=1;
+		var bReady=true;
+		var x=-aLi[0].offsetWidth;
+		oUl.addEventListener('touchstart',function(ev){
+			
+			if(!bReady)return;
+			bReady=false;
+			
+			oUl.style.WebkitTransition='none';
+			var downX=ev.targetTouches[0].clientX;
+			var disX=downX-x;
+			document.addEventListener('touchmove',fnMove,false);
+			document.addEventListener('touchend',fnEnd,false);
+			function fnMove(ev){
+				x=ev.targetTouches[0].clientX-disX;
+				oUl.style.WebkitTransform='translate3d('+x+'px,0,0)';	
+			}
+			
+			function fnEnd(ev){
+				oUl.style.WebkitTransition='0.3s';
+				document.removeEventListener('touchmove',fnMove,false);
+				document.removeEventListener('touchend',fnEnd,false);		
+				var upX=ev.changedTouches[0].clientX;
+				
+				var cw=Math.abs(upX-downX);
+				
+				//双击时
+				if(cw==0){
+					bReady=true;	
+				}
+				
+				//走ul 是否切换
+				if(cw>50){
+					
+					if(downX>upX){
+						//左
+						iNow++;
+					}else{
+						//右
+						iNow--;	
+					}
+					x=-iNow*aLi[0].offsetWidth;
+					console.log(aLi[0].offsetWidth);
+					oUl.style.WebkitTransform='translate3d('+x+'px,0,0)';	
+				}else{
+					x=-iNow*aLi[0].offsetWidth;
+					oUl.style.WebkitTransform='translate3d('+x+'px,0,0)';	
+				}
+			}
+			ev.preventDefault();	
+		},false);
+		
+		
+		//运动完毕事件
+		oUl.addEventListener('transitionend',function(){
+			bReady=true;
+			if(iNow==aLi.length-1){
+				//alert('完毕');
+				oUl.style.WebkitTransition='none';
+				iNow=1;
+				x=-iNow*aLi[0].offsetWidth;
+				oUl.style.WebkitTransform='translate3d('+x+'px,0,0)';	
+			}
+			
+			if(iNow==0){
+				//alert('完毕');
+				oUl.style.WebkitTransition='none';
+				iNow=aLi.length-2;
+				x=-iNow*aLi[0].offsetWidth;
+				oUl.style.WebkitTransform='translate3d('+x+'px,0,0)';	
+			}
+			
+		},false);
+	})();
 	$(function(){
 		var aBtn = $('#btn div');
 		var aBtn2 = $('#btn2 div');
@@ -307,24 +397,36 @@
 			$(this).on('tap',function(){		
 				$(document).tap(aBtn,aOL,index);			
 			})			
-		});				
+		});
+
 		//初始化数据https://bird.ioliu.cn/v1?url=http://v.juhe.cn/toutiao/index?type=guonei&key=d54a7ae78f4852d38a3474e87e743a1a&cb=show
 		//https://bird.ioliu.cn/netease?id=222222
 		$.ajax({
-            url:'https://bird.ioliu.cn/netease',
+            url:'https://bird.ioliu.cn/weather',
             dataType:'jsonp',
             data:{
-                playlist_id:'222222'
+                city:'北京'
             },
             success:function (res) {
-                // console.log(res.data.result.tracks[1].name);
-                // console.log(res.data.result.tracks[0].mp3Url);
-                for (var i = 0; i < 7; i++) {
-                	var aaa = '<li><a href="'+res.data.result.tracks[i].mp3Url+'">'+res.data.result.tracks[i].name+'（↓）</a></li>';
-                	$('#list1').append(aaa);
-                }
+            	var aaa = '<li>城市：'+res.data.realtime.city_name+'&nbsp &nbsp &nbsp &nbsp &nbsp'+res.data.realtime.date+'</li>'+
+						'<li>天气:'+res.data.realtime.weather.info+'</li>'+
+						'<li>风力:'+res.data.realtime.wind.direct+'&nbsp '+res.data.realtime.wind.power+'</li>'+
+						'<li style="height:6rem;">空气质量：'+res.data.pm25.pm25.curPm+' ('+res.data.pm25.pm25.quality+') <br/>友情提示：'+res.data.pm25.pm25.des+' </li>';
+                $('#list1').append(aaa); 
             }
         });
+		var oLogin = $('#top .login');
+		var oLog = $('.login-son');
+		var oSign = $('#top .sign');
+		$.fn.show = function(){
+			oLog.toggle();
+		}
+		$(oLogin).on('tap',function(){
+			show();		
+		});
+		$(oSign).on('tap',function(){
+			show();		
+		});
 	})
 </script>
 <!--
