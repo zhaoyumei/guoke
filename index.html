@@ -5,8 +5,6 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0"/>
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta name="format-detection" content="telephone=no,email=no">
 <title>GUoke</title>
 <link rel="stylesheet" type="text/css" href="css/index.css">
@@ -21,10 +19,10 @@
 		<div class="user-box" id="menu"> 
 			<div class="sign-login" id="#top">
 				<div class="login">用户登录
-					<div class="login-son">
+					<!-- <div class="login-son">
 						&nbsp账号：<input type="text" ></input><br/>
 						&nbsp密码：<input type="password" ></input>
-					</div>
+					</div> -->
 				</div>
 				<div class="sign">用户注册</div>
 				
@@ -426,95 +424,4 @@
 		// });
 	})
 </script>
-<!--
-<script>
-	document.addEventListener('DOMContentLoaded',function(){
-		var oBtn = document.querySelector('.btn');
-		var aBtn = oBtn.children;
-
-		var oUl=document.querySelector('.banner');
-		var aLi=oUl.children;
-		var iNow=1;
-		var bReady=true;
-		
-		var x=-aLi[0].offsetWidth;
-		oUl.addEventListener('touchstart',function(ev){
-			if(!bReady)return;
-			bReady=false;
-			
-			oUl.style.WebkitTransition='none';
-			var downX=ev.targetTouches[0].clientX;
-			var disX=downX-x;
-			document.addEventListener('touchmove',fnMove,false);
-			document.addEventListener('touchend',fnEnd,false);
-			function fnMove(ev){
-				x=ev.targetTouches[0].clientX-disX;
-				oUl.style.WebkitTransform='translate3d('+x+'px,0,0)';	
-			}
-			
-			function fnEnd(ev){
-				oUl.style.WebkitTransition='0.3s';
-				document.removeEventListener('touchmove',fnMove,false);
-				document.removeEventListener('touchend',fnEnd,false);			
-				var upX=ev.changedTouches[0].clientX;				
-				var cw=Math.abs(upX-downX);
-				if(cw>50){	
-					if(downX>upX){
-						iNow++;
-						for (var i = 0; i < aBtn.length; i++) {
-							aBtn[i].className = '';
-
-						}
-						if (iNow==aLi.length-1) {
-							aBtn[0].classList.add('active');
-						}else{
-							aBtn[Math.abs(iNow-1)].classList.add('active');
-						}
-						
-					}else{
-						iNow--;	
-						for (var i = 0; i < aBtn.length; i++) {
-							aBtn[i].className = '';
-						}
-						if (iNow==0) {
-							aBtn[aBtn.length-1].classList.add('active');
-							
-						}else{
-							aBtn[Math.abs(iNow-1)].classList.add('active');
-						}
-						
-					}
-					x=-iNow*aLi[0].offsetWidth;
-					console.log(iNow);
-
-					oUl.style.WebkitTransform='translate3d('+x+'px,0,0)';	
-				}else{
-					x=-iNow*aLi[0].offsetWidth;
-					oUl.style.WebkitTransform='translate3d('+x+'px,0,0)';	
-				}
-				
-			}
-			ev.preventDefault();	
-		},false);
-		oUl.addEventListener('transitionend',function(){
-			bReady=true;
-			if(iNow==aLi.length-1){
-				oUl.style.WebkitTransition='none';
-				iNow=1;
-				x=-iNow*aLi[0].offsetWidth;
-				oUl.style.WebkitTransform='translate3d('+x+'px,0,0)';	
-			}
-			
-			if(iNow==0){
-				oUl.style.WebkitTransition='none';
-				iNow=aLi.length-2;
-				x=-iNow*aLi[0].offsetWidth;
-				oUl.style.WebkitTransform='translate3d('+x+'px,0,0)';	
-			}
-			
-		},false);
-		
-	},false);
-</script> 
--->
 </html>
