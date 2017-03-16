@@ -63,50 +63,9 @@ section {
       section .user-box .sign-login .login {
         background: url(../img/sign.png) no-repeat 1.45rem center;
         background-size: 1.45rem 1.45rem; }
-    section .user-box .slide {
+    section .user-box .swiper-container img {
       height: 7.85rem;
-      width: 100%;
-      overflow: hidden; }
-      section .user-box .slide ul {
-        height: 7.85rem;
-        width: 500%;
-        overflow: hidden;
-        -webkit-transform: translate3d(-16rem, 0, 0); }
-      section .user-box .slide li {
-        float: left;
-        height: 7.85rem;
-        width: calc(100%/5); }
-        section .user-box .slide li img {
-          height: 7.85rem;
-          width: 16rem; }
-        section .user-box .slide li a {
-          display: block;
-          position: relative;
-          height: 7.85rem;
-          width: 100%; }
-          section .user-box .slide li a img {
-            height: 7.85rem;
-            width: 100%; }
-          section .user-box .slide li a span {
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            height: 1.85rem;
-            background: #000;
-            opacity: .5;
-            filter: alpha(opacity=50); }
-          section .user-box .slide li a p {
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            height: 1.85rem;
-            font-size: 0.75rem;
-            color: #fff;
-            line-height: 1.85rem;
-            text-align: center;
-            letter-spacing: 1px; }
+      width: 100%; }
     section .user-box .list1 {
       width: 100%; }
       section .user-box .list1 li {
