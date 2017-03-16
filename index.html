@@ -12,6 +12,20 @@
 <style>
 	
 </style>
+<script>
+	(function(win,doc){
+		win.addEventListener('resize',change,false);
+		change();
+		function change(){
+			if (document.documentElement.clientWidth>960) {
+				doc.documentElement.style.fontSize=2/320*doc.documentElement.clientWidth+'px';	
+			}else{
+				doc.documentElement.style.fontSize=20/320*doc.documentElement.clientWidth+'px';	
+			}
+			
+		}	
+	})(window,document);
+</script>
 </head>
 <body>
 	<header>
@@ -31,19 +45,18 @@
 				<div class="sign">用户注册</div>
 				
 			</div>
-			<!-- <div class="swiper-container">
+			<div class="swiper-container">
 			    <div class="swiper-wrapper">
 			        <div class="swiper-slide"><img src="img/slide1.png"></div>
 				    <div class="swiper-slide"><img src="img/2.jpg"></div>
 				    <div class="swiper-slide"><img src="img/3.jpg"></div>
-				    <div class="swiper-pagination"></div>
-			        <div class="swiper-button-prev"></div>
-    				<div class="swiper-button-next"></div>
 			    </div>
-			</div> -->
+			     <div class="swiper-pagination"></div>
+			     <div class="swiper-button-prev"></div>
+    			<div class="swiper-button-next"></div>
+			</div>
 			<ul class="list1" id="list1">
 				<!-- 交互 -->
-
 			</ul>
 			<div class="hot hot-question">
 				<div class="hot-title clearfix">
@@ -280,33 +293,22 @@
 <script src="js/fx.js"></script>
 <script src="js/swiper-3.4.2.min.js"></script>
 <script> 
-	// var mySwiper = new Swiper('.swiper-container',{
-	// 	pagination: '.swiper-pagination',  //生成小		圆点
-	// 	paginationClickable: true, //允许点击
+	var mySwiper = new Swiper('.swiper-container',{
+		pagination: '.swiper-pagination',  //生成小		圆点
+		paginationClickable: true, //允许点击
 
-	// 	nextButton: '.swiper-button-next',
- //        prevButton: '.swiper-button-prev',
+		nextButton: '.swiper-button-next',
+        prevButton: '.swiper-button-prev',
         
-	// 	autoplay:1000,
-	// 	loop:true
-	// })
+		autoplay:1000,
+		loop:true
+	})
 </script>
 <script type="text/javascript">
 	document.addEventListener('touchstart',function(ev){
 		ev.preventDefault();
 	},false);
-	(function(win,doc){
-		win.addEventListener('resize',change,false);
-		change();
-		function change(){
-			if (document.documentElement.clientWidth>960) {
-				doc.documentElement.style.fontSize=2/320*doc.documentElement.clientWidth+'px';	
-			}else{
-				doc.documentElement.style.fontSize=20/320*doc.documentElement.clientWidth+'px';	
-			}
-			
-		}	
-	})(window,document);
+	
 	$(function(){
 		var aBtn = $('#btn div');
 		var aBtn2 = $('#btn2 div');
