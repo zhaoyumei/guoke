@@ -52,8 +52,7 @@
 				    <div class="swiper-slide"><img src="img/3.jpg"></div>
 			    </div>
 			     <div class="swiper-pagination"></div>
-			     <div class="swiper-button-prev"></div>
-    			<div class="swiper-button-next"></div>
+			   
 			</div>
 			<ul class="list1" id="list1">
 				<!-- 交互 -->
@@ -296,19 +295,26 @@
 	var mySwiper = new Swiper('.swiper-container',{
 		pagination: '.swiper-pagination',  //生成小		圆点
 		paginationClickable: true, //允许点击
-
-		nextButton: '.swiper-button-next',
-        prevButton: '.swiper-button-prev',
-        
-		autoplay:1000,
+		autoplay:2000,
 		loop:true
 	})
 </script>
 <script type="text/javascript">
-	document.addEventListener('touchstart',function(ev){
-		ev.preventDefault();
-	},false);
-	
+ 
+    document.addEventListener('touchstart',function (event) {  
+        if(event.touches.length>1){  
+            event.preventDefault();  
+        }  
+    })  
+    var lastTouchEnd=0;  
+    document.addEventListener('touchend',function (event) {  
+        var now=(new Date()).getTime();  
+        if(now-lastTouchEnd<=300){  
+            event.preventDefault();  
+        }  
+        lastTouchEnd=now;  
+    },false)  
+   
 	$(function(){
 		var aBtn = $('#btn div');
 		var aBtn2 = $('#btn2 div');
