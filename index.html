@@ -344,10 +344,10 @@
                 city:'北京'
             },
             success:function (res) {
-            	var aaa = '<li>城市：'+res.data.realtime.city_name+'&nbsp &nbsp &nbsp &nbsp &nbsp'+res.data.realtime.date+'</li>'+
-						'<li>天气:'+res.data.realtime.weather.info+'</li>'+
-						'<li>风力:'+res.data.realtime.wind.direct+'&nbsp '+res.data.realtime.wind.power+'</li>'+
-						'<li style="height:6rem;">空气质量：'+res.data.pm25.pm25.curPm+' ('+res.data.pm25.pm25.quality+') <br/>友情提示：'+res.data.pm25.pm25.des+' </li>';
+            	var aaa = '<li>城市：'+res.result.city+'&nbsp &nbsp &nbsp &nbsp &nbsp'+res.result.date+'</li>'+
+						'<li>天气:'+res.result.weather+'</li>'+
+						'<li>风力:'+res.result.winddirect+'&nbsp '+res.result.windpower+'</li>'+
+						'<li style="height:6rem;">空气质量：'1' </li>';
                 $('#list1').append(aaa); 
             }
         });
